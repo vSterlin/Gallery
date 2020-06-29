@@ -2,7 +2,6 @@ import React, {useState, useEffect} from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import SlickSlider from "react-slick"
 import styled from "styled-components"
-import Layout from "./Layout"
 import Img from "gatsby-image";
 
 import "slick-carousel/slick/slick.css"
