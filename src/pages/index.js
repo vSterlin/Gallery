@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useStaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
-import Layout from "../components/Layout";
+// import Layout from "../components/Layout";
 import Slider from "../components/Slider";
 import ContactForm from "../components/ContactForm";
 import TempGallery from "../components/TempGallery";
@@ -18,7 +18,7 @@ const MapWrapper = styled.div`
 
 const IndexPage = () => {
   return (
-    <Layout>
+    // <Layout>
       {/* <TempGallery /> */}
       <Slider />
       <ContactForm />
@@ -32,7 +32,7 @@ const IndexPage = () => {
         tabindex="0"
       ></Map>
             </MapWrapper>
-    </Layout>
+    // </Layout>
   );
 };
 
