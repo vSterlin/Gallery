@@ -19,6 +19,7 @@ const MapWrapper = styled.div`
 const IndexPage = () => {
   return (
     // <Layout>
+    <>
       {/* <TempGallery /> */}
       <Slider />
       <ContactForm />
@@ -32,6 +33,7 @@ const IndexPage = () => {
         tabindex="0"
       ></Map>
             </MapWrapper>
+            </>
     // </Layout>
   );
 };

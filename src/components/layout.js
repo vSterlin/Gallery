@@ -1,6 +1,6 @@
 import React from "react";
 // import { useStaticQuery, graphql } from "gatsby"
-import styled, { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from "styled-components";
 import Header from "./Header";
 import Footer from "./Footer";
 
