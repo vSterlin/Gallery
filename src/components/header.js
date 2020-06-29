@@ -1,42 +1,55 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
-import React from "react"
+import React from "react";
+import { Link } from "gatsby";
+import styled from "styled-components";
+import {Gallery} from "@styled-icons/remix-fill";
+const Head = styled.header`
+  height: 200px;
+  background-color: #e2f3f5;
+  color: #0e153a;
+  text-align: center;
+  padding: 20px 30px;
+  box-sizing: border-box;
+  box-shadow: 0 0 100px rgb(0,0,0);
+  z-index: 3;
+  position: relative;
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
-)
 
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
+`;
+const Title = styled.h1`
 
-Header.defaultProps = {
-  siteTitle: ``,
-}
+`;
 
-export default Header
+const Nav = styled.nav`
+margin-top: 30px;
+  &> * {
+    margin: 0 10px;
+  }
+`;
+
+const StyledLink = styled(Link)`
+  &.active {
+    border: 1px red solid;
+  }
+`;
+
+const StyledIcon = styled(Gallery)`
+  height: 2em;
+`;
+
+const Header = () => (
+  <Head>
+    <Title>
+      VS <br />
+      Gallery
+    </Title>
+    <StyledIcon />
+    <Nav>
+      <Link activeClassName="active">Home</Link>
+      <Link activeClassName="active">Our Work</Link>
+      <Link activeClassName="active">Blog</Link>
+      <Link activeClassName="active">Contact</Link>
+    </Nav>
+  </Head>
+);
+
+export default Header;

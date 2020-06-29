@@ -1,22 +1,39 @@
-import React from "react"
-import { Link } from "gatsby"
+import React, { useState, useEffect } from "react";
+import { Link, useStaticQuery, graphql } from "gatsby";
+import styled from "styled-components";
+import Layout from "../components/Layout";
+import Slider from "../components/Slider";
+import ContactForm from "../components/ContactForm";
+import TempGallery from "../components/TempGallery";
+const Map = styled.iframe`
+  width: 100vw;
+  border: none;
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+  height: 100%;
+`;
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link> <br />
-    <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-  </Layout>
-)
+const MapWrapper = styled.div`
+  height: 400px;
+`;
 
-export default IndexPage
+const IndexPage = () => {
+  return (
+    <Layout>
+      {/* <TempGallery /> */}
+      <Slider />
+      <ContactForm />
+      <MapWrapper>
+
+
+      <Map
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2003012.2649133084!2d-47.64262176239926!3d60.64202584817835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4eab93cd099ee567%3A0xf97781a95b2bc13d!2sKujalleq%20Municipality%2C%20Greenland!5e0!3m2!1sen!2sus!4v1593416007260!5m2!1sen!2sus"
+        allowfullscreen=""
+        aria-hidden="false"
+        tabindex="0"
+      ></Map>
+            </MapWrapper>
+    </Layout>
+  );
+};
+
+export default IndexPage;
