@@ -149,7 +149,6 @@ const SliderList = ({ slides, imageArray, page, color }) => {
   return (
     <FlexBox color={color}>
       <BigStyledSlider {...settingsBig} ref={big => setBigNav(big)} asNavFor={smallNav}>
-        {console.log(bigNav)}
         {imageArray.map((image, i) => {
 
             const img = image.fluid;

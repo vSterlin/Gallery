@@ -23,7 +23,7 @@ const IndexPage = () => {
       {/* <TempGallery /> */}
       <MainSlider />
       <ContactForm />
-      <MapWrapper>
+      {/* <MapWrapper>
 
 
       <Map
@@ -32,7 +32,7 @@ const IndexPage = () => {
         aria-hidden="false"
         tabindex="0"
       ></Map>
-            </MapWrapper>
+            </MapWrapper> */}
 
     </Layout>
   );
