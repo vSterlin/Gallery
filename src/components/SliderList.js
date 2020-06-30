@@ -4,7 +4,6 @@ import SlickSlider from "react-slick"
 import styled from "styled-components"
 import Img from "gatsby-image";
 
-
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 
@@ -55,9 +54,6 @@ const ImageWrapper = styled.div`
 
 const SliderList = ({slides}) => {
 
-  // const [navBig, setNavBig] = useState();
-  // const [navSmall, setNavSmall] = useState();
-
 
   const settings = {
     dots: false,
@@ -88,11 +84,39 @@ const SliderList = ({slides}) => {
   `)
 
 
+const [width, setWidth] = useState(null);
+
+
+useEffect(() => {
+  setWidth(window.innerWidth);
+  window.addEventListener("resize", () => {
+    setWidth(window.innerWidth);
+  });
+  return () => {
+    window.removeEventListener("resize", () => {});
+  };
+}, []);
+// useEffect(() => {
+//   window.addEventListener("load", () => {
+//     setWidth(window.innerWidth);
+//     console.log('hi')
+//   });
+//   return () => {
+//     window.removeEventListener("load", () => {});
+//   };
+// }, []);
+
+// useEffect(() => {
+//   console.log(width);
+
+// }, [width])
+
+
   const imageArray = data.images.edges;
   return (
     <>
-      {/* {(typeof window !== `undefined`) && width <= 768 ? (
-            <StyledSlider {...settings} slidesToShow={1}>
+      {(typeof window !== `undefined`) && (
+            <StyledSlider {...settings} slidesToShow={width > 768 ? 3 : 1}>
 
             {imageArray.map(({node}, i) => {
               return (
@@ -104,33 +128,8 @@ const SliderList = ({slides}) => {
     
     
           </StyledSlider>
-      ) : (      <StyledSlider {...settings} slidesToShow={3}>
-
-        {imageArray.map(({node}, i) => {
-          return (
-            <ImageWrapper>
-            <Image fluid={node.childImageSharp.fluid} />{" "}
-          </ImageWrapper>
-          )
-        })}
-
-
-      </StyledSlider>)} */}
+      ) }
       
-
-<StyledSlider {...settings} slidesToShow={slides}>
-
-        {imageArray.map(({node}, i) => {
-          return (
-            <ImageWrapper>
-            <Image fluid={node.childImageSharp.fluid} />{" "}
-          </ImageWrapper>
-          )
-        })}
-
-
-      </StyledSlider>
-
     </>
   )
 }

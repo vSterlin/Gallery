@@ -35,12 +35,14 @@ exports.createPages = ({ graphql, actions }) => {
 
     // Create blog post pages.
     result.data.allContentfulImageType.edges.forEach((edge) => {
+      const pathName = `${edge.node.name}`.toLowerCase();
       createPage({
         // Path for this page — required
-        path: `${edge.node.name}`.toLowerCase(),
+        path: pathName,
         component: pageTemplate,
         context: {
-          name: edge.node.name
+          name: edge.node.name,
+          element: pathName
           // Add optional context data to be inserted
           // as props into the page component..
           //

@@ -1,12 +1,26 @@
 import React from "react";
 import styled from "styled-components";
+import Layout from "../components/Layout";
+import SliderList from "../components/SliderList";
 
-const REd = styled.div`
-background-color: red;
-height: 100vh;
+import {colorObject} from "../colors/colors";
+
+
+const Main = styled.div`
+  background-color: ${({color}) => colorObject[color].backgroundColor};
+  color: ${({color}) => colorObject[color].secondaryColor};
+
+  height: 100vh;
 `;
-const TemplatePage = () => {
-  return <REd>xdfss</REd>;
-}
+const TemplatePage = ({ pageContext, data }) => {
+const {element} = pageContext;
+  return (
+    <Layout color={element}>
+      <Main color={element}>
+        <SliderList />
+      </Main>
+    </Layout>
+  );
+};
 
 export default TemplatePage;

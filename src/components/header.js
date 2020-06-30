@@ -2,10 +2,13 @@ import React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 import {Gallery} from "@styled-icons/remix-fill";
+
+import {colorObject} from "../colors/colors";
+
 const Head = styled.header`
   height: 200px;
-  background-color: #e2f3f5;
-  color: #0e153a;
+  background-color: ${({color}) => colorObject[color].headerColor};
+  color: ${({color}) => colorObject[color].headerTextColor};
   text-align: center;
   padding: 20px 30px;
   box-sizing: border-box;
@@ -36,8 +39,9 @@ const StyledIcon = styled(Gallery)`
   height: 2em;
 `;
 
-const Header = () => (
-  <Head>
+const Header = ({color}) => {
+  return (
+  <Head color={color} >
     <Title>
       VS <br />
       Gallery
@@ -50,6 +54,6 @@ const Header = () => (
       <Link activeClassName="active">Contact</Link>
     </Nav>
   </Head>
-);
+)};
 
 export default Header;

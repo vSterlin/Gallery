@@ -15,6 +15,10 @@ const Slider = () => {
     };
   }, []);
 
+  useEffect(() => {
+    console.log(width);
+
+  }, [width])
   return (
     <>
       {typeof window !== `undefined` && width <= 768 ? (

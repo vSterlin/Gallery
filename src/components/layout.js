@@ -10,14 +10,13 @@ const Global = createGlobalStyle`
 }
 `;
 
-const Layout = ({ children }) => {
-
+const Layout = ({ children, color }) => {
   return (
     <div>
       <Global />
-      <Header />
+      <Header color={color} />
       {children}
-      <Footer />
+      <Footer color={color}/>
     </div>
   );
 };

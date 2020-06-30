@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useStaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
 import Layout from "../components/Layout";
-import Slider from "../components/Slider";
+import SliderList from "../components/SliderList";
 import ContactForm from "../components/ContactForm";
 import TempGallery from "../components/TempGallery";
 const Map = styled.iframe`
@@ -18,10 +18,10 @@ const MapWrapper = styled.div`
 
 const IndexPage = () => {
   return (
-     <Layout>
+     <Layout color="main">
 
       {/* <TempGallery /> */}
-      <Slider />
+      <SliderList />
       <ContactForm />
       <MapWrapper>
 
