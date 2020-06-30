@@ -14,7 +14,7 @@ const Foot = styled.footer`
 const Footer = ({color}) => {
   return (
     <Foot color={color}>
-      Created by VS
+      Created by VS {new Date().getFullYear()} &copy;
     </Foot>
   )
 }

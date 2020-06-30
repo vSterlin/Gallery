@@ -7,7 +7,11 @@ import Img from "gatsby-image";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const StyledSlider = styled(SlickSlider)`
+import { colorObject } from "../colors/colors";
+
+
+
+const BigStyledSlider = styled(SlickSlider)`
   /* width: 50vw; */
   margin: 0 auto;
   position: relative;
@@ -15,28 +19,33 @@ const StyledSlider = styled(SlickSlider)`
   /* box-shadow: 0 0 100px rgb(0,0,0); */
   z-index: 2;
 
-  height: 50vh;
+  height: 70vh;
+  width: 60vw;
+  margin-top: 30px;
 
   @media only screen and (max-width: 768px) {
     height: 40vh;
   }
 `;
-const PhoneSlider = styled(SlickSlider)`
+
+const SmallStyledSlider = styled(SlickSlider)`
   /* width: 50vw; */
-  margin: 0 auto;
+  margin: 30px auto;
   position: relative;
-  height: 20vh;
+  /* height: 50vh; */
   /* box-shadow: 0 0 100px rgb(0,0,0); */
   z-index: 2;
-
-  @media only screen and (min-width: 768px) {
-    display: none;
+  height: 20vh;
+  width: 60vw;
+ 
+  @media only screen and (max-width: 768px) {
+    height: 10vh;
   }
 `;
 
 const Image = styled(Img)`
   /* height: 60vh; */
- height: 50vh;
+  height: 70vh;
   
 
   @media only screen and (max-width: 768px) {
@@ -44,17 +53,49 @@ const Image = styled(Img)`
   }
 `;
 
+const SmallImage = styled(Img)`
+  /* height: 60vh; */
+  height: 20vh;
+  
+
+  @media only screen and (max-width: 768px) {
+    height: 10vh;
+  }
+`;
+
 const ImageWrapper = styled.div``;
 
-const SliderList = ({ slides, imageArray, page }) => {
-  const settings = {
+const FlexBox = styled.div`
+  display: flex;
+  flex-direction: column;
+
+
+  background-color: ${({ color }) => colorObject[color].backgroundColor};
+  color: ${({ color }) => colorObject[color].secondaryColor};
+  min-height: 90vh;
+  justify-content: center;
+
+`;
+
+const SliderList = ({ slides, imageArray, page, color }) => {
+  const settingsBig = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+
+  };
+
+  const settingsSmall = {
     dots: false,
     infinite: true,
     speed: 500,
-    // slidesToShow: 3,
+    slidesToShow: 3,
     slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 1000,
+    arrows: false
+
+
   };
 
   // const data = useStaticQuery(graphql`
@@ -101,28 +142,39 @@ const SliderList = ({ slides, imageArray, page }) => {
 
   // const imageArray = data.images.edges;
   // console.log(imageArray);
-  return (
-    <>
-      <StyledSlider {...settings} slidesToShow={slides}>
-        {imageArray.map((image, i) => {
-          let img;
 
-          //for sourcing from filesystem
-          if (image.node) {
-            img = image.node.childImageSharp.fluid;
-          }
-          //for sourcing from contentful
-          else {
-            img = image.fluid;
-          }
+  const [smallNav, setSmallNav] = useState(null);
+  const [bigNav, setBigNav] = useState(null);
+
+  return (
+    <FlexBox color={color}>
+      <BigStyledSlider {...settingsBig} ref={big => setBigNav(big)} asNavFor={smallNav}>
+        {console.log(bigNav)}
+        {imageArray.map((image, i) => {
+
+            const img = image.fluid;
+          
           return (
             <ImageWrapper>
               <Image fluid={img} page={page}/>{" "}
             </ImageWrapper>
           );
         })}
-      </StyledSlider>
-    </>
+      </BigStyledSlider>
+      <SmallStyledSlider {...settingsSmall} ref={small => setSmallNav(small)} asNavFor={bigNav}>
+        {imageArray.map((image, i) => {
+
+            const img = image.fluid;
+          
+          return (
+            <ImageWrapper>
+              <SmallImage fluid={img} page={page}/>{" "}
+            </ImageWrapper>
+          );
+        })}
+      </SmallStyledSlider>
+
+    </FlexBox>
   );
 };
 

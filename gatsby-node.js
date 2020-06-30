@@ -38,7 +38,7 @@ exports.createPages = ({ graphql, actions }) => {
       const pathName = `${edge.node.name}`.toLowerCase();
       createPage({
         // Path for this page — required
-        path: pathName,
+      path: `ourwork/${pathName}`,
         component: pageTemplate,
         context: {
           name: edge.node.name,
