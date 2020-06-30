@@ -19,11 +19,12 @@ const FormFieldWrapper = styled.div`
 `;
 
 const StyledInput = styled.input`
-  width: ${({half}) => half ? "42.5%" : "90%"};
+  width: ${({half}) => half ? "44%" : "90%"};
   box-sizing: border-box;
   height: 30px;
   margin: 5px 0;
-  margin-${({side}) => side}: 2.5%;
+  /* margin-${({side}) => side}: 2.5%; */
+  ${({side}) => `margin-${side}: 1%;`}
 `;
 
 const StyledTextArea = styled.textarea`
