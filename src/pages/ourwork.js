@@ -35,7 +35,7 @@ import {StyledLink} from "../components/StyledLink";
 // `;
 
 const CircleDiv = styled.div`
-  border: 1px black solid;
+
   border-radius: 500px;
   display: grid;
   grid-template-rows:1fr 1fr;
@@ -46,10 +46,21 @@ const CircleDiv = styled.div`
   overflow: hidden;
   margin: 0 auto;
 
+  @keyframes circleAppear {
+    from {
+      transform: scale(0, 0) rotate(-360deg);
+    }
+    to {
+      transform: scale(1, 1) rotate(0deg);
+    }
+  }
+
+  animation: circleAppear 0.5s linear forwards;
+
 `;
 const CircleSectionDiv = styled.div`
-  background-color: ${({element}) => colorObject[element].headerColor};
-  color: ${({element}) => colorObject[element].headerTextColor};
+  background-color: ${({element}) => colorObject[element].wheelBackground};
+  color: ${({element}) => colorObject[element].wheelIcon};
 
     padding: ${({element}) => (element === "fire" || element === "earth") ? "10%" : "0"} ${({element}) => (element === "air" || element === "earth") ? "10%" : "0"} ${({element}) => (element === "air" || element === "water") ? "10%" : "0"} ${({element}) => (element === "fire" || element === "water") ? "10%" : "0"};
     
@@ -63,8 +74,8 @@ const CircleSectionDiv = styled.div`
         transform: scale(1.1, 1.1);
         }
         /* animation: backgroundColorChange 1s linear forwards, colorChange 1s linear forwards; */
-        background-color: ${({element}) => colorObject[element].headerTextColor};
-        color: ${({element}) => colorObject[element].headerColor};
+        background-color: ${({element}) => colorObject[element].wheelIcon};
+        color: ${({element}) => colorObject[element].wheelIconBright};
     }
     transition: background-color 0.3s linear, color 0.3s linear;
 
@@ -85,8 +96,12 @@ const IconWrapper = styled.div`
 
 
 const Background = styled.div`
-  background-color: ${colorObject["fire"].backgroundColor};
-  padding: 50px;
+  background-color: #263942;
+  box-sizing: border-box;
+  height: calc(100vh - 250px);
+  display: flex;
+  align-items: center;
+
 `;
 
 const circleArr = [{name: `fire`, component: <Fire />}, {name: `earth`, component: <Leaf />}, {name:`water`, component: <Water />}, {name:`air`, component: <Wind />}];

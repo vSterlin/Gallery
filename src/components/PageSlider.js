@@ -3,13 +3,34 @@ import { Link, useStaticQuery, graphql } from "gatsby";
 import SlickSlider from "react-slick";
 import styled from "styled-components";
 import Img from "gatsby-image";
-
+import {LeftArrowAlt, RightArrowAlt} from "@styled-icons/boxicons-solid/"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import { colorObject } from "../colors/colors";
 
-
+const sliderSize = {
+  desktop: {
+    small: {
+      height: "15vh",
+      width: "50vw",
+    },
+    big: {
+      height: "50vh",
+      width: "50vw",
+    },
+  },
+  mobile: {
+    small: {
+      height: "10vh",
+      width: "80vw",
+    },
+    big: {
+      height: "30vh",
+      width: "80vw",
+    },
+  },
+};
 
 const BigStyledSlider = styled(SlickSlider)`
   /* width: 50vw; */
@@ -19,12 +40,13 @@ const BigStyledSlider = styled(SlickSlider)`
   /* box-shadow: 0 0 100px rgb(0,0,0); */
   z-index: 2;
 
-  height: 70vh;
-  width: 60vw;
+  height: ${sliderSize.desktop.big.height};
+  width: ${sliderSize.desktop.big.width};
   margin-top: 30px;
 
   @media only screen and (max-width: 768px) {
-    height: 40vh;
+    height: ${sliderSize.mobile.big.height};
+    width: ${sliderSize.mobile.big.width};
   }
 `;
 
@@ -35,31 +57,32 @@ const SmallStyledSlider = styled(SlickSlider)`
   /* height: 50vh; */
   /* box-shadow: 0 0 100px rgb(0,0,0); */
   z-index: 2;
-  height: 20vh;
-  width: 60vw;
- 
+  height: ${sliderSize.desktop.small.height};
+  width: ${sliderSize.desktop.small.width};
+
   @media only screen and (max-width: 768px) {
-    height: 10vh;
+    height: ${sliderSize.mobile.small.height};
+    width: ${sliderSize.mobile.small.width};
   }
 `;
 
 const Image = styled(Img)`
   /* height: 60vh; */
-  height: 70vh;
-  
+  height: ${sliderSize.desktop.big.height};
 
   @media only screen and (max-width: 768px) {
-    height: 40vh;
+    height: ${sliderSize.mobile.big.height};
+    /* width: ${sliderSize.mobile.big.width}; */
   }
 `;
 
 const SmallImage = styled(Img)`
   /* height: 60vh; */
-  height: 20vh;
-  
+  height: ${sliderSize.desktop.small.height};
 
   @media only screen and (max-width: 768px) {
-    height: 10vh;
+    height: ${sliderSize.mobile.small.height};
+    /* width: ${sliderSize.mobile.small.imageWidth}; */
   }
 `;
 
@@ -69,14 +92,16 @@ const FlexBox = styled.div`
   display: flex;
   flex-direction: column;
 
-
   background-color: ${({ color }) => colorObject[color].backgroundColor};
   color: ${({ color }) => colorObject[color].secondaryColor};
-  min-height: 90vh;
+  height: calc(100vh - 250px);
   justify-content: center;
-
 `;
 
+const LeftArrow = styled(LeftArrowAlt)`
+  height: 20px;
+  color: yellow;
+`;
 const SliderList = ({ slides, imageArray, page, color }) => {
   const settingsBig = {
     dots: true,
@@ -84,7 +109,8 @@ const SliderList = ({ slides, imageArray, page, color }) => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-
+    prevArrow: <LeftArrow />,
+    nextArrow: <RightArrowAlt />,
   };
 
   const settingsSmall = {
@@ -93,86 +119,44 @@ const SliderList = ({ slides, imageArray, page, color }) => {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
-    arrows: false
-
-
+    arrows: false,
   };
-
-  // const data = useStaticQuery(graphql`
-  //   query {
-  //      images: allFile {
-  //       edges {
-  //         node {
-  //           childImageSharp {
-  //         fluid(quality: 80, maxWidth: 1920) {
-  //           ...GatsbyImageSharpFluid_withWebp
-  //         }
-  //       }
-  //         }
-  //       }
-  //     }
-  //   }
-  // `)
-
-  // const [width, setWidth] = useState(null);
-
-  // useEffect(() => {
-  //   setWidth(window.innerWidth);
-  //   window.addEventListener("resize", () => {
-  //     setWidth(window.innerWidth);
-  //   });
-  //   return () => {
-  //     window.removeEventListener("resize", () => {});
-  //   };
-  // }, []);
-  // useEffect(() => {
-  //   window.addEventListener("load", () => {
-  //     setWidth(window.innerWidth);
-  //     console.log('hi')
-  //   });
-  //   return () => {
-  //     window.removeEventListener("load", () => {});
-  //   };
-  // }, []);
-
-  // useEffect(() => {
-  //   console.log(width);
-
-  // }, [width])
-
-  // const imageArray = data.images.edges;
-  // console.log(imageArray);
 
   const [smallNav, setSmallNav] = useState(null);
   const [bigNav, setBigNav] = useState(null);
 
   return (
     <FlexBox color={color}>
-      <BigStyledSlider {...settingsBig} ref={big => setBigNav(big)} asNavFor={smallNav}>
+      <BigStyledSlider
+        {...settingsBig}
+        ref={(big) => setBigNav(big)}
+        asNavFor={smallNav}
+      >
         {imageArray.map((image, i) => {
+          const img = image.fluid;
 
-            const img = image.fluid;
-          
           return (
             <ImageWrapper>
-              <Image fluid={img} page={page}/>{" "}
+              <Image fluid={img} page={page} />{" "}
             </ImageWrapper>
           );
         })}
       </BigStyledSlider>
-      <SmallStyledSlider {...settingsSmall} ref={small => setSmallNav(small)} asNavFor={bigNav}>
+      <SmallStyledSlider
+        {...settingsSmall}
+        ref={(small) => setSmallNav(small)}
+        asNavFor={bigNav}
+      >
         {imageArray.map((image, i) => {
+          const img = image.fluid;
 
-            const img = image.fluid;
-          
           return (
             <ImageWrapper>
-              <SmallImage fluid={img} page={page}/>{" "}
+              <SmallImage fluid={img} page={page} />{" "}
             </ImageWrapper>
           );
         })}
       </SmallStyledSlider>
-
     </FlexBox>
   );
 };
