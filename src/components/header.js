@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 import { Gallery } from "@styled-icons/remix-fill";
@@ -77,7 +77,12 @@ const iconObject = {
   air: Wind,
 };
 
-const Header = ({ color }) => {
+const Header = (props) => {
+const [color, setColor] = useState(props.color);
+  // useEffect(() => {
+  //   setColor(props.color)
+
+  // }, [])
   const IconComponent = iconResize(iconObject[color], color);
   return (
     <Head color={color}>
