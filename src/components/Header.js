@@ -2,6 +2,9 @@ import React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 import { Gallery } from "@styled-icons/remix-fill";
+import { Fire } from "@styled-icons/icomoon";
+import { Leaf, Water } from "@styled-icons/entypo";
+import { Wind } from "@styled-icons/boxicons-regular";
 
 import { colorObject } from "../colors/colors";
 
@@ -25,22 +28,60 @@ const Nav = styled.nav`
 
     color: ${({ color }) => colorObject[color].headerTextColor};
     &.active {
-    border-bottom: 1px ${({ color }) => colorObject[color].headerTextColor} solid;
-  }
+      border-bottom: 1px ${({ color }) => colorObject[color].headerTextColor}
+        solid;
+    }
   }
 `;
 
 const StyledLink = styled(Link)`
   text-decoration: none;
-
-
 `;
 
 const StyledIcon = styled(Gallery)`
   height: 2em;
 `;
 
+const LocationHeader = styled.div`
+  position: absolute;
+  height: 200px;
+  width: 100px;
+  right: 0;
+  top: 0;
+  line-height: 200px;
+  /* transform: translateY(100%); */
+`;
+
+const iconResize = (icon, color) => {
+  if(color === "fire" ||
+  color === "earth" ||
+  color === "water" ||
+  color === "air"){
+  return styled(icon)`
+    color: ${colorObject[color].headerTextColor};
+    position: absolute;
+    height: 200px;
+    width: 100px;
+    right: 50px;
+    top: 0;
+    line-height: 200px;
+
+    &:hover {
+      color: ${colorObject[color].headerColor};
+    }
+  `};
+  return null;
+};
+
+const iconObject = {
+  fire: Fire,
+  earth: Leaf,
+  water: Water,
+  air: Wind,
+};
+
 const Header = ({ color }) => {
+  const IconComponent = iconResize(iconObject[color], color);
   return (
     <Head color={color}>
       <Title>
@@ -57,10 +98,27 @@ const Header = ({ color }) => {
         </StyledLink>
         <StyledLink activeClassName="active">Blog</StyledLink>
         <StyledLink activeClassName="active">Contact</StyledLink>
-        <StyledLink partiallyActive activeClassName="active" to="/ourwork/fire">Fire</StyledLink>
-        <StyledLink partiallyActive activeClassName="active" to="/ourwork/earth">Earth</StyledLink>
-        <StyledLink partiallyActive activeClassName="active" to="/ourwork/water">Water</StyledLink>
-        <StyledLink partiallyActive activeClassName="active" to="/ourwork/air">Air</StyledLink>
+        {/* <StyledLink partiallyActive activeClassName="active" to="/ourwork/fire">
+          Fire
+        </StyledLink>
+        <StyledLink
+          partiallyActive
+          activeClassName="active"
+          to="/ourwork/earth"
+        >
+          Earth
+        </StyledLink>
+        <StyledLink
+          partiallyActive
+          activeClassName="active"
+          to="/ourwork/water"
+        >
+          Water
+        </StyledLink>
+        <StyledLink partiallyActive activeClassName="active" to="/ourwork/air">
+          Air
+        </StyledLink> */}
+          {IconComponent && <IconComponent />}
 
       </Nav>
     </Head>

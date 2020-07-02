@@ -93,16 +93,26 @@ const FlexBox = styled.div`
   flex-direction: column;
 
   background-color: ${({ color }) => colorObject[color].backgroundColor};
-  color: ${({ color }) => colorObject[color].secondaryColor};
+  /* color: ${({ color }) => colorObject[color].secondaryColor}; */
   height: calc(100vh - 250px);
   justify-content: center;
 `;
 
-const LeftArrow = styled(LeftArrowAlt)`
-  height: 20px;
-  color: yellow;
-`;
+const iconResize = (icon, color) => {
+  return (styled(icon)`
+    color: ${colorObject[color].headerTextColor};
+    height: 50px;
+    &:hover {
+      color: ${colorObject[color].headerColor}
+    }
+  `);
+}
+
+
 const SliderList = ({ slides, imageArray, page, color }) => {
+{console.log(color)}
+const LeftArrow = iconResize(LeftArrowAlt, color);
+const RightArrow = iconResize(RightArrowAlt, color);
   const settingsBig = {
     dots: true,
     infinite: true,
@@ -110,7 +120,7 @@ const SliderList = ({ slides, imageArray, page, color }) => {
     slidesToShow: 1,
     slidesToScroll: 1,
     prevArrow: <LeftArrow />,
-    nextArrow: <RightArrowAlt />,
+    nextArrow: <RightArrow />,
   };
 
   const settingsSmall = {

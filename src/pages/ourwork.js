@@ -96,7 +96,7 @@ const IconWrapper = styled.div`
 
 
 const Background = styled.div`
-  background-color: #263942;
+  background-color: ${({color}) => colorObject[color].backgroundColor};
   box-sizing: border-box;
   height: calc(100vh - 250px);
   display: flex;
@@ -109,8 +109,8 @@ const circleArr = [{name: `fire`, component: <Fire />}, {name: `earth`, componen
 
 const OurWork = () => {
   return (
-     <Layout color="main">
-       <Background>
+     <Layout color="ourWork">
+       <Background color="ourWork">
 
 
        <CircleDiv>

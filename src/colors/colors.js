@@ -4,7 +4,11 @@ export const colorObject = {
     headerColor: `#e2f3f5`,
     headerTextColor: `#0e153a`,
   },
-
+  ourWork: {
+    headerColor: `#1d2b32`,
+    headerTextColor: `#eaf0f3`,
+    backgroundColor: `#263942`
+  },
   fire: {
     headerColor: `#171d22`,
     headerTextColor: `#ff5959`,
