@@ -66,9 +66,6 @@ const iconResize = (icon, color) => {
     top: 0;
     line-height: 200px;
 
-    &:hover {
-      color: ${colorObject[color].headerColor};
-    }
   `};
   return null;
 };
