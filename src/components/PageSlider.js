@@ -51,7 +51,10 @@ const BigStyledSlider = styled(SlickSlider)`
 
   & > svg {
     color: ${({ color }) => colorObject[color].headerTextColor};
-    
+    &:active {
+      color: ${({ color }) => colorObject[color].headerTextColor};
+
+    }
     &:hover {
       color: ${({ color }) => colorObject[color].headerColor};    }
   }
