@@ -70,12 +70,7 @@ const iconResize = (icon, color) => {
   return null;
 };
 
-const iconObject = {
-  fire: iconResize(Fire),
-  earth: iconResize(Leaf),
-  water: iconResize(Water),
-  air: iconResize(Wind),
-};
+
 
 const Header = (props) => {
 const [color, setColor] = useState(props.color);
@@ -83,6 +78,12 @@ const [color, setColor] = useState(props.color);
   //   setColor(props.color)
 
   // }, [])
+  const iconObject = {
+    fire: iconResize(Fire, color),
+    earth: iconResize(Leaf, color),
+    water: iconResize(Water, color),
+    air: iconResize(Wind, color),
+  };
   const IconComponent = iconObject[props.color];
   return (
     <Head color={color}>

@@ -137,8 +137,8 @@ const [color, setColor] = useState(props.color);
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    prevArrow: <LeftArrow color={props.color}/>,
-    nextArrow: <RightArrow color={props.color}/>,
+    prevArrow: <LeftArrow color={color}/>,
+    nextArrow: <RightArrow color={color}/>,
   };
 
   const settingsSmall = {
