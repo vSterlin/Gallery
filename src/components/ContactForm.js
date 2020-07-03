@@ -52,7 +52,7 @@ const P = styled.p`
 const ContactForm = () => {
   return (
     <FormDiv>
-      <Form>
+      <Form method="post" data-netlify="true" data-netlify-honeypot="bot-field">
       <H2>Get in touch with us!</H2>
       <P>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio necessitatibus error, alias fugiat doloribus exercitationem ut beatae magni quas incidunt quam ipsa quidem ratione totam deleniti tempora. Corrupti, quo numquam?</P>
 <FormFieldWrapper>
@@ -68,6 +68,7 @@ const ContactForm = () => {
 <FormFieldWrapper>
   <StyledTextArea placeholder="Your message" name="message"></StyledTextArea>
 </FormFieldWrapper>
+<input type="hidden" name="form-name" value="contact" />
       </Form>
     </FormDiv>
   )
