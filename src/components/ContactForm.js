@@ -57,7 +57,7 @@ const Button = styled.button`
 const ContactForm = () => {
   return (
     <FormDiv>
-      <Form method="post" netlify-honeypot="bot-field" data-netlify="true" name="contact">
+      <Form method="post" netlify-honeypot="bot-field" data-netlify="true" name="contact" action="/pages/success">
       <H2>Get in touch with us!</H2>
       <P>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio necessitatibus error, alias fugiat doloribus exercitationem ut beatae magni quas incidunt quam ipsa quidem ratione totam deleniti tempora. Corrupti, quo numquam?</P>
 <FormFieldWrapper>
