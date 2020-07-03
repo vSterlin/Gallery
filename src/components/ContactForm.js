@@ -57,7 +57,7 @@ const Button = styled.button`
 const ContactForm = () => {
   return (
     <FormDiv>
-      <Form method="post" data-netlify="true" data-netlify-honeypot="bot-field">
+      <Form method="post" netlify-honeypot="bot-field" data-netlify="true" name="contact">
       <H2>Get in touch with us!</H2>
       <P>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio necessitatibus error, alias fugiat doloribus exercitationem ut beatae magni quas incidunt quam ipsa quidem ratione totam deleniti tempora. Corrupti, quo numquam?</P>
 <FormFieldWrapper>
@@ -75,6 +75,7 @@ const ContactForm = () => {
   <Button type="submit">Send</Button>
 
 </FormFieldWrapper>
+<input type="hidden" name="bot-field" />
 <input type="hidden" name="form-name" value="contact" />
       </Form>
     </FormDiv>
