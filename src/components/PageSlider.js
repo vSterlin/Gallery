@@ -104,7 +104,7 @@ const FlexBox = styled.div`
 //     color: ${colorObject[color].headerTextColor};
 //     height: 50px;
 //     &:hover {
-//       color: ${colorObject[color].headerColor}
+//       color: ${colorObject[color].headerColor};
 //     }
 //   `);
 // }
@@ -114,14 +114,14 @@ const LeftArrow = styled(LeftArrowAlt)`
     /* color: ${colorObject[`${({color}) => color}`].headerTextColor}; */
     height: 50px;
     &:hover {
-      color: ${colorObject[`${({color}) => color}`].headerColor}
+      /* color: ${colorObject[`${({color}) => color}`].headerColor}; */
     }
   `;
 const RightArrow = styled(RightArrowAlt)`
 /* color: ${colorObject[`${({color}) => color}`].headerTextColor}; */
 height: 50px;
 &:hover {
-  color: ${colorObject[`${({color}) => color}`].headerColor}
+  /* color: ${colorObject[`${({color}) => color}`].headerColor}; */
 }
 `;
 
