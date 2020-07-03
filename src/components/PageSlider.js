@@ -112,10 +112,10 @@ const iconResize = (icon, color) => {
 const SliderList = (props) => {
 const { slides, imageArray, page } = props;
 const [color, setColor] = useState(props.color);
-  // useEffect(() => {
-  //   setColor(props.color)
+  useEffect(() => {
+    setColor(props.color)
 
-  // }, [])
+  }, [color])
 const LeftArrow = iconResize(LeftArrowAlt, color);
 const RightArrow = iconResize(RightArrowAlt, color);
   const settingsBig = {
