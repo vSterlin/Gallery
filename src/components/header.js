@@ -58,7 +58,6 @@ const iconResize = (icon, color) => {
   color === "water" ||
   color === "air"){
   return styled(icon)`
-    color: ${colorObject[color].headerTextColor};
     position: absolute;
     height: 200px;
     width: 100px;
@@ -79,12 +78,12 @@ const [color, setColor] = useState(props.color);
 
   // }, [])
   const iconObject = {
-    fire: iconResize(Fire, color),
-    earth: iconResize(Leaf, color),
-    water: iconResize(Water, color),
-    air: iconResize(Wind, color),
+    fire: (Fire),
+    earth: (Leaf),
+    water: (Water),
+    air: (Wind),
   };
-  const IconComponent = iconObject[props.color];
+  const IconComponent = iconObject[color];
   return (
     <Head color={color}>
       <Title>
