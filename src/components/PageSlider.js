@@ -48,6 +48,13 @@ const BigStyledSlider = styled(SlickSlider)`
     height: ${sliderSize.mobile.big.height};
     width: ${sliderSize.mobile.big.width};
   }
+
+  & > svg {
+    color: ${({ color }) => colorObject[color].headerTextColor};
+    
+    &:hover {
+      color: ${({ color }) => colorObject[color].headerColor};    }
+  }
 `;
 
 const SmallStyledSlider = styled(SlickSlider)`
@@ -98,24 +105,6 @@ const FlexBox = styled.div`
   justify-content: center;
 `;
 
-const iconResize = (icon, color) => {
-  if (
-    color === "fire" ||
-    color === "earth" ||
-    color === "water" ||
-    color === "air"
-  ) {
-    return styled(icon)`
-      color: ${colorObject[color].headerTextColor};
-      height: 50px;
-      &:hover {
-        color: ${colorObject[color].headerColor};
-      }
-    `;
-  }
-  return null;
-};
-
 // const LeftArrow = styled(LeftArrowAlt)`
 //     /* color: ${colorObject[`${({ color }) => color}`].headerTextColor}; */
 //     height: 50px;
@@ -132,23 +121,17 @@ const iconResize = (icon, color) => {
 // `;
 
 const SliderList = (props) => {
-  
   const { slides, imageArray, page } = props;
   const [color, setColor] = useState(props.color);
-  const LeftArrow = iconResize(LeftArrowAlt, color)
 
-const RightArrow = iconResize(RightArrowAlt, color)
-
-  // const LeftArrow = iconResize(LeftArrowAlt, color);
-  // const RightArrow = iconResize(RightArrowAlt, color);
   const settingsBig = {
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    prevArrow: <LeftArrow />,
-    nextArrow: <RightArrow />,
+    prevArrow: <LeftArrowAlt />,
+    nextArrow: <RightArrowAlt />,
   };
 
   const settingsSmall = {
@@ -169,6 +152,7 @@ const RightArrow = iconResize(RightArrowAlt, color)
         {...settingsBig}
         ref={(big) => setBigNav(big)}
         asNavFor={smallNav}
+        color={color}
       >
         {imageArray.map((image, i) => {
           const img = image.fluid;
