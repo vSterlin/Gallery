@@ -56,6 +56,10 @@ const CircleDiv = styled.div`
   }
 
   animation: circleAppear 0.5s linear forwards;
+  @media only screen and (max-width: 768px){
+    width: 400px;
+    height: 400px;
+  }
 
 `;
 const CircleSectionDiv = styled.div`
@@ -68,6 +72,7 @@ const CircleSectionDiv = styled.div`
     justify-content: center;
     align-items: center;
     height: 100%;
+    font-family: 'Notable', sans-serif;
 
     &:hover {
       &> * {
@@ -88,6 +93,9 @@ const IconWrapper = styled.div`
   &> svg {
       height: 100px;
       margin-bottom: 10px;
+      @media only screen and (max-width: 768px){
+    height: 60px;
+  }
     }
 
 
