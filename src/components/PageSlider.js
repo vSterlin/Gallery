@@ -94,7 +94,7 @@ const FlexBox = styled.div`
 
   background-color: ${({ color }) => colorObject[color].backgroundColor};
   /* color: ${({ color }) => colorObject[color].secondaryColor}; */
-  height: calc(100vh - 250px);
+  height: calc(100vh - 200px);
   justify-content: center;
 `;
 
@@ -113,7 +113,7 @@ const SliderList = (props) => {
 const { slides, imageArray, page } = props;
 const [color, setColor] = useState(props.color);
   useEffect(() => {
-    setColor(props.color)
+    console.log(color)
 
   }, [color])
 const LeftArrow = iconResize(LeftArrowAlt, color);
