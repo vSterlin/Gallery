@@ -111,14 +111,14 @@ const FlexBox = styled.div`
 
 
 const LeftArrow = styled(LeftArrowAlt)`
-    color: ${colorObject[`${({color}) => color}`].headerTextColor};
+    /* color: ${colorObject[`${({color}) => color}`].headerTextColor}; */
     height: 50px;
     &:hover {
       color: ${colorObject[`${({color}) => color}`].headerColor}
     }
   `;
 const RightArrow = styled(RightArrowAlt)`
-color: ${colorObject[`${({color}) => color}`].headerTextColor};
+/* color: ${colorObject[`${({color}) => color}`].headerTextColor}; */
 height: 50px;
 &:hover {
   color: ${colorObject[`${({color}) => color}`].headerColor}
@@ -137,8 +137,8 @@ const [color, setColor] = useState(props.color);
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    prevArrow: <LeftArrow color={color}/>,
-    nextArrow: <RightArrow color={color}/>,
+    prevArrow: <LeftArrow />,
+    nextArrow: <RightArrow />,
   };
 
   const settingsSmall = {
