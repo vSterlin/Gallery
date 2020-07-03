@@ -43,14 +43,27 @@ const StyledTextArea = styled.textarea`
 
 const H2 = styled.h2`
   margin-bottom: 5px;
+  font-family: 'Cookie', cursive;
+ 
 `;
 
 const P = styled.p`
   margin: 5px 0;
+
 `;
 
 const Button = styled.button`
   width: 90%;
+  background-color: #0e153a;
+  color: #e2f3f5;
+  border: none;
+  height: 20px;
+  &:hover {
+    background-color: #e2f3f5;
+  color: #0e153a;
+  }
+  /* font-family: 'Oswald', sans-serif; */
+
 
 `;
 
@@ -59,7 +72,7 @@ const ContactForm = () => {
     <FormDiv>
       <Form method="post" netlify-honeypot="bot-field" data-netlify="true" name="contact" action="/success">
       <H2>Get in touch with us!</H2>
-      <P>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio necessitatibus error, alias fugiat doloribus exercitationem ut beatae magni quas incidunt quam ipsa quidem ratione totam deleniti tempora. Corrupti, quo numquam?</P>
+      <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, maxime?</P>
 <FormFieldWrapper>
 
       <StyledInput side="right" required half type="text" placeholder="Name" name="name"/>

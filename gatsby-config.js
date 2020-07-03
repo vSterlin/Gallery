@@ -38,24 +38,12 @@ module.exports = {
     // `gatsby-plugin-offline`,
     `gatsby-plugin-styled-components`,
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: 'gatsby-plugin-web-font-loader',
       options: {
-        fonts: [
-          {
-            family: `Notable`,
-          },
-          {
-            family: `Yellowtail`,
-          },
-          {
-            family: `Orbitron`,
-          },
-          {
-            family: `Playfair Display`,
-          },
-
-        ],
-      },
+        google: {
+          families: ['Oswald', 'Notable', 'Cookie']
+        }
+      }
     }
 
   ],

@@ -19,7 +19,10 @@ const Head = styled.header`
   z-index: 3;
   position: relative;
 `;
-const Title = styled.h1``;
+const Title = styled.h1`
+    font-family: 'Cookie', cursive;
+
+`;
 
 const Nav = styled.nav`
   margin-top: 30px;
