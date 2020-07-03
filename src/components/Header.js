@@ -79,10 +79,10 @@ const iconObject = {
 
 const Header = (props) => {
 const [color, setColor] = useState(props.color);
-  useEffect(() => {
-    setColor(props.color)
+  // useEffect(() => {
+  //   setColor(props.color)
 
-  }, [color]);
+  // }, [])
   const IconComponent = iconResize(iconObject[color], color);
   return (
     <Head color={color}>

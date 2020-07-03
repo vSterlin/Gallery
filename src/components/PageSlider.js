@@ -98,37 +98,47 @@ const FlexBox = styled.div`
   justify-content: center;
 `;
 
-const iconResize = (icon, color) => {
-  return (styled(icon)`
-    color: ${colorObject[color].headerTextColor};
+// const iconResize = (icon, color) => {
+//   console.log(color);
+//   return (styled(icon)`
+//     color: ${colorObject[color].headerTextColor};
+//     height: 50px;
+//     &:hover {
+//       color: ${colorObject[color].headerColor}
+//     }
+//   `);
+// }
+
+
+const LeftArrow = styled(LeftArrowAlt)`
+    color: ${colorObject[`${({color}) => color}`].headerTextColor};
     height: 50px;
     &:hover {
-      color: ${colorObject[color].headerColor}
+      color: ${colorObject[`${({color}) => color}`].headerColor}
     }
-  `);
+  `;
+const RightArrow = styled(RightArrowAlt)`
+color: ${colorObject[`${({color}) => color}`].headerTextColor};
+height: 50px;
+&:hover {
+  color: ${colorObject[`${({color}) => color}`].headerColor}
 }
-
+`;
 
 const SliderList = (props) => {
 const { slides, imageArray, page } = props;
 const [color, setColor] = useState(props.color);
-const [arrows, setArrows] = useState({
-  left: iconResize(LeftArrowAlt, props.color),
-  right: iconResize(RightArrowAlt, props.color)
-})
-  // useEffect(() => {
-  //   console.log(color)
 
-  // }, [color])
-
+// const LeftArrow = iconResize(LeftArrowAlt, color);
+// const RightArrow = iconResize(RightArrowAlt, color);
   const settingsBig = {
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    prevArrow: <arrows.left />,
-    nextArrow: <arrows.right />,
+    prevArrow: <LeftArrow color={props.color}/>,
+    nextArrow: <RightArrow color={props.color}/>,
   };
 
   const settingsSmall = {
