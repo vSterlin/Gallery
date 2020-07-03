@@ -49,6 +49,11 @@ const P = styled.p`
   margin: 5px 0;
 `;
 
+const Button = styled.button`
+  width: 90%;
+
+`;
+
 const ContactForm = () => {
   return (
     <FormDiv>
@@ -57,16 +62,18 @@ const ContactForm = () => {
       <P>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio necessitatibus error, alias fugiat doloribus exercitationem ut beatae magni quas incidunt quam ipsa quidem ratione totam deleniti tempora. Corrupti, quo numquam?</P>
 <FormFieldWrapper>
 
-      <StyledInput side="right" half type="text" placeholder="Name" name="name"/>
-      <StyledInput side="left" half type="tel" placeholder="Phone Number" name="phone"/>
+      <StyledInput side="right" required half type="text" placeholder="Name" name="name"/>
+      <StyledInput side="left" required half type="tel" placeholder="Phone Number" name="phone"/>
 
 </FormFieldWrapper>
 <FormFieldWrapper>
-      <StyledInput type="email" placeholder="Email" name="email"/>
+      <StyledInput type="email" required placeholder="Email" name="email"/>
 
 </FormFieldWrapper>
 <FormFieldWrapper>
-  <StyledTextArea placeholder="Your message" name="message"></StyledTextArea>
+  <StyledTextArea  required placeholder="Your message" name="message"></StyledTextArea>
+  <Button type="submit">Send</Button>
+
 </FormFieldWrapper>
 <input type="hidden" name="form-name" value="contact" />
       </Form>
