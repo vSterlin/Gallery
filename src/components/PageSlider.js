@@ -3,7 +3,7 @@ import { Link, useStaticQuery, graphql } from "gatsby";
 import SlickSlider from "react-slick";
 import styled from "styled-components";
 import Img from "gatsby-image";
-import {LeftArrowAlt, RightArrowAlt} from "@styled-icons/boxicons-solid/"
+import { LeftArrowAlt, RightArrowAlt } from "@styled-icons/boxicons-solid/";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -98,39 +98,49 @@ const FlexBox = styled.div`
   justify-content: center;
 `;
 
-// const iconResize = (icon, color) => {
-//   console.log(color);
-//   return (styled(icon)`
-//     color: ${colorObject[color].headerTextColor};
+const iconResize = (icon, color) => {
+  if (
+    color === "fire" ||
+    color === "earth" ||
+    color === "water" ||
+    color === "air"
+  ) {
+    return styled(icon)`
+      color: ${colorObject[color].headerTextColor};
+      height: 50px;
+      &:hover {
+        color: ${colorObject[color].headerColor};
+      }
+    `;
+  }
+  return null;
+};
+
+// const LeftArrow = styled(LeftArrowAlt)`
+//     /* color: ${colorObject[`${({ color }) => color}`].headerTextColor}; */
 //     height: 50px;
 //     &:hover {
-//       color: ${colorObject[color].headerColor};
+//       /* color: ${colorObject[`${({ color }) => color}`].headerColor}; */
 //     }
-//   `);
+//   `;
+// const RightArrow = styled(RightArrowAlt)`
+// /* color: ${colorObject[`${({ color }) => color}`].headerTextColor}; */
+// height: 50px;
+// &:hover {
+//   /* color: ${colorObject[`${({ color }) => color}`].headerColor}; */
 // }
-
-
-const LeftArrow = styled(LeftArrowAlt)`
-    /* color: ${colorObject[`${({color}) => color}`].headerTextColor}; */
-    height: 50px;
-    &:hover {
-      /* color: ${colorObject[`${({color}) => color}`].headerColor}; */
-    }
-  `;
-const RightArrow = styled(RightArrowAlt)`
-/* color: ${colorObject[`${({color}) => color}`].headerTextColor}; */
-height: 50px;
-&:hover {
-  /* color: ${colorObject[`${({color}) => color}`].headerColor}; */
-}
-`;
+// `;
 
 const SliderList = (props) => {
-const { slides, imageArray, page } = props;
-const [color, setColor] = useState(props.color);
+  
+  const { slides, imageArray, page } = props;
+  const [color, setColor] = useState(props.color);
+  const LeftArrow = iconResize(LeftArrowAlt, color)
 
-// const LeftArrow = iconResize(LeftArrowAlt, color);
-// const RightArrow = iconResize(RightArrowAlt, color);
+const RightArrow = iconResize(RightArrowAlt, color)
+
+  // const LeftArrow = iconResize(LeftArrowAlt, color);
+  // const RightArrow = iconResize(RightArrowAlt, color);
   const settingsBig = {
     dots: true,
     infinite: true,

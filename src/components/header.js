@@ -53,10 +53,7 @@ const LocationHeader = styled.div`
 `;
 
 const iconResize = (icon, color) => {
-  if(color === "fire" ||
-  color === "earth" ||
-  color === "water" ||
-  color === "air"){
+
   return styled(icon)`
     position: absolute;
     height: 200px;
@@ -65,8 +62,7 @@ const iconResize = (icon, color) => {
     top: 0;
     line-height: 200px;
 
-  `};
-  return null;
+  `
 };
 
 
@@ -78,10 +74,10 @@ const [color, setColor] = useState(props.color);
 
   // }, [])
   const iconObject = {
-    fire: (Fire),
-    earth: (Leaf),
-    water: (Water),
-    air: (Wind),
+    fire: iconResize(Fire),
+    earth: iconResize(Leaf),
+    water: iconResize(Water),
+    air: iconResize(Wind),
   };
   const IconComponent = iconObject[color];
   return (
